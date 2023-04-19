@@ -41,7 +41,7 @@ class GameFragment : Fragment() {
                     answers = listOf("ViewGroup", "ViewSet", "ViewCollection", "ViewRoot")),
             Question(text = "What layout do you use for complex screens?",
                     answers = listOf("ConstraintLayout", "GridLayout", "LinearLayout", "FrameLayout")),
-            Question(text = "What do you use to push structured data into a layout?",
+/*            Question(text = "What do you use to push structured data into a layout?",
                     answers = listOf("Data binding", "Data pushing", "Set text", "An OnClick method")),
             Question(text = "What method do you use to inflate layouts in fragments?",
                     answers = listOf("onCreateView()", "onActivityCreated()", "onCreateLayout()", "onInflateLayout()")),
@@ -54,7 +54,7 @@ class GameFragment : Fragment() {
             Question(text = "Which XML element lets you register an activity with the launcher activity?",
                     answers = listOf("intent-filter", "app-registry", "launcher-registry", "app-launcher")),
             Question(text = "What do you use to mark a layout for data binding?",
-                    answers = listOf("<layout>", "<binding>", "<data-binding>", "<dbinding>"))
+                    answers = listOf("<layout>", "<binding>", "<data-binding>", "<dbinding>"))*/
     )
 
 
@@ -101,7 +101,8 @@ class GameFragment : Fragment() {
                     } else {
                         // We've won!  Navigate to the gameWonFragment.
                         view.findNavController()
-                            .navigate(R.id.action_gameFragment_to_gameWonFragment)
+                            .navigate(GameFragmentDirections
+                                .actionGameFragmentToGameWonFragment(numQuestions, questionIndex))
                     }
                 } else {
                     // Game over! A wrong answer sends us to the gameOverFragment.
