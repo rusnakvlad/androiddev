@@ -179,8 +179,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        dessertTimer.stopTimer()
-        // Timber.i("onStop Called")
+        // dessertTimer.stopTimer()
+        Timber.i("onStop Called")
     }
 
     override fun onDestroy() {
