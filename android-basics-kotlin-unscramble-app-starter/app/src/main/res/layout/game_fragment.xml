@@ -13,7 +13,18 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="gameViewModel"
+            type="com.example.android.unscramble.ui.game.GameViewModel" />
+        <variable
+            name="maxNoOfWords"
+            type="int" />
+    </data>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -61,6 +72,7 @@
 
         <TextView
             android:id="@+id/textView_unscrambled_word"
+            android:text="@{gameViewModel.currentScrambledWord}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_margin"
@@ -74,9 +86,9 @@
 
         <TextView
             android:id="@+id/word_count"
+            android:text="@{@string/word_count(gameViewModel.currentWordCount, maxNoOfWords)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/word_count"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             app:layout_constraintBottom_toTopOf="@+id/textView_unscrambled_word"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,9 +97,9 @@
 
         <TextView
             android:id="@+id/score"
+            android:text="@{@string/score(gameViewModel.score)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/score"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             app:layout_constraintEnd_toEndOf="parent"
@@ -118,3 +130,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
+</layout>
