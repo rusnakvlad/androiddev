@@ -2,10 +2,14 @@ package com.example.android.unscramble.ui.game
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.android.unscramble.R
 
 class GameViewModel : ViewModel() {
 
-    private var score = 0
+    private var _score = 0
+    val score: Int
+        get() = _score
+
     private var currentWordCount = 0
     private lateinit var _currentScrambledWord: String
     val currentScrambledWord: String
@@ -27,7 +31,7 @@ class GameViewModel : ViewModel() {
         Log.d("GameFragment", "GameViewModel destroyed!")
     }
 
-    private var wordsList: MutableList<String> = mutableListOf("asdf", "sdf")
+    private var wordsList: MutableList<String> = mutableListOf()
     private lateinit var currentWord: String
 
     private fun getNextWord() {
@@ -56,6 +60,18 @@ class GameViewModel : ViewModel() {
             getNextWord()
             true
         } else false
+    }
+
+    private fun increaseScore() {
+        _score += SCORE_INCREASE
+    }
+
+    fun isUserWordCorrect(playerWord: String): Boolean {
+        if (playerWord.equals(currentWord, true)) {
+            increaseScore()
+            return true
+        }
+        return false
     }
 
     init {
